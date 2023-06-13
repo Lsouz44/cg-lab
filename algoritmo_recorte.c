@@ -106,6 +106,7 @@ void renderScene(GLFWwindow* window) {
     glClear(GL_COLOR_BUFFER_BIT);
     drawRectangle();
     cohenSutherland(20, 60, 200, 400); // Exemplo de linha a ser recortada
+    cohenSutherland(0, 0, 49, 49);
     glfwSwapBuffers(window);
 }
 
@@ -135,7 +136,6 @@ int main() {
     glfwTerminate();
     return 0;
 }
-
 
 
 // para compilar:
