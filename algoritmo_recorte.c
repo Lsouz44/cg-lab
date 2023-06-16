@@ -105,28 +105,28 @@ void display()
     drawLine(xmax, ymin, xmin, ymin, 0.0f, 0.0f, 0.0f);
 
     // Desenhar as linhas de teste
-    drawLine(100, 80, 150, 120, 1.0f, 0.0f, 0.0f);
-    drawLine(80, 160, 220, 190, 1.0f, 0.0f, 0.0f);
-    drawLine(50, 130, 250, 130, 1.0f, 0.0f, 0.0f);
-    drawLine(170, 220, 170, 50, 1.0f, 0.0f, 0.0f);
-    drawLine(120, 70, 220, 230, 1.0f, 0.0f, 0.0f);
-    drawLine(180, 240, 240, 40, 1.0f, 0.0f, 0.0f);
-    drawLine(60, 190, 200, 50, 1.0f, 0.0f, 0.0f);
-    drawLine(160, 30, 210, 250, 1.0f, 0.0f, 0.0f);
-    drawLine(90, 210, 250, 80, 1.0f, 0.0f, 0.0f);
-    drawLine(30, 30, 30, 180, 1.0f, 0.0f, 0.0f);
+    drawLine(36, 86, 14, 165, 1.0f, 0.0f, 0.0f);
+    drawLine(157, 104, 87, 79, 1.0f, 0.0f, 0.0f);
+    drawLine(153, 244, 114, 160, 1.0f, 0.0f, 0.0f);
+    drawLine(213, 167, 145, 20, 1.0f, 0.0f, 0.0f);
+    drawLine(227, 65, 36, 65, 1.0f, 0.0f, 0.0f);
+    drawLine(63, 240, 63, 34, 1.0f, 0.0f, 0.0f);
+    drawLine(242, 57, 185, 12, 1.0f, 0.0f, 0.0f);
+    drawLine(142, 176, 195, 107, 1.0f, 0.0f, 0.0f);
+    drawLine(97, 50, 50, 95, 1.0f, 0.0f, 0.0f);
+    drawLine(125, 0, 125, 50, 1.0f, 0.0f, 0.0f);
 
     // Realizar o recorte de Cohen-Sutherland para cada linha de teste
-    clipLine(100, 80, 150, 120);
-    clipLine(80, 160, 220, 190);
-    clipLine(50, 130, 250, 130);
-    clipLine(170, 220, 170, 50);
-    clipLine(120, 70, 220, 230);
-    clipLine(180, 240, 240, 40);
-    clipLine(60, 190, 200, 50);
-    clipLine(160, 30, 210, 250);
-    clipLine(90, 210, 250, 80);
-    clipLine(30, 30, 30, 180);
+    clipLine(36, 86, 14, 165);
+    clipLine(157, 104, 87, 79);
+    clipLine(153, 244, 114, 160);
+    clipLine(213, 167, 145, 20);
+    clipLine(227, 65, 36, 65);
+    clipLine(63, 240, 63, 34);
+    clipLine(242, 57, 185, 12);
+    clipLine(142, 176, 195, 107);
+    clipLine(97, 50, 50, 95);
+    clipLine(125, 0, 125, 50);
 
     glFlush();
 }
@@ -145,7 +145,7 @@ int main(int argc, char** argv)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(800, 600);
-    glutCreateWindow("Recorte de Cohen-Sutherland");
+    glutCreateWindow("Algoritmo de recorte de Cohen-Sutherland");
     init();
     glutDisplayFunc(display);
     glutMainLoop();
