@@ -98,7 +98,7 @@ void cortarLinha(float x1, float y1, float x2, float y2)
 }
 
 // Função para exibir os resultados na tela
-void display()
+void Desenha(void)
 {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -142,8 +142,8 @@ void display()
     glutSwapBuffers();
 }
 
-// Função de inicialização do OpenGL
-void init()
+// Inicializa parâmetros de rendering
+void Inicializa()
 {
     // Define a cor de fundo da janela de visualização como branco
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -178,6 +178,7 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h)
     gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);
 }
 
+// Programa Principal
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
@@ -185,9 +186,9 @@ int main(int argc, char** argv)
     glutInitWindowSize(800, 600);
     glutInitWindowPosition(10,10);
     glutCreateWindow("Algoritmo de recorte de Cohen-Sutherland");
-    glutDisplayFunc(display);
+    glutDisplayFunc(Desenha);
     glutReshapeFunc(AlteraTamanhoJanela);
-    init();
+    Inicializa();
     glutMainLoop();
     return 0;
 }
