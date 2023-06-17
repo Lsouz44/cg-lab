@@ -14,8 +14,8 @@ const float ymin = 50;
 const float xmax = 200;
 const float ymax = 200;
 
-// Função para desenhar uma linha usando OpenGL
-void drawLine(float x1, float y1, float x2, float y2, float r, float g, float b)
+// Função para desenhar uma linha
+void desenharLinha(float x1, float y1, float x2, float y2, float r, float g, float b)
 {
     glColor3f(r, g, b);
     glBegin(GL_LINES);
@@ -25,7 +25,7 @@ void drawLine(float x1, float y1, float x2, float y2, float r, float g, float b)
 }
 
 // Função para realizar o recorte de Cohen-Sutherland
-void clipLine(float x1, float y1, float x2, float y2)
+void cortarLinha(float x1, float y1, float x2, float y2)
 {
     float x, y;
     int code1, code2, codeOut;
@@ -90,43 +90,43 @@ void clipLine(float x1, float y1, float x2, float y2)
     }
 
     // Desenhar a linha recortada
-    drawLine(x1, y1, x2, y2, 0.0f, 1.0f, 0.0f);
+    desenharLinha(x1, y1, x2, y2, 0.0f, 1.0f, 0.0f);
 }
 
-// Função para exibir os resultados na tela usando OpenGL
+// Função para exibir os resultados na tela
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Desenhar a área de recorte retangular em preto
-    drawLine(xmin, ymin, xmin, ymax, 0.0f, 0.0f, 0.0f);
-    drawLine(xmin, ymax, xmax, ymax, 0.0f, 0.0f, 0.0f);
-    drawLine(xmax, ymax, xmax, ymin, 0.0f, 0.0f, 0.0f);
-    drawLine(xmax, ymin, xmin, ymin, 0.0f, 0.0f, 0.0f);
+    desenharLinha(xmin, ymin, xmin, ymax, 0.0f, 0.0f, 0.0f);
+    desenharLinha(xmin, ymax, xmax, ymax, 0.0f, 0.0f, 0.0f);
+    desenharLinha(xmax, ymax, xmax, ymin, 0.0f, 0.0f, 0.0f);
+    desenharLinha(xmax, ymin, xmin, ymin, 0.0f, 0.0f, 0.0f);
 
     // Desenhar as linhas de teste
-    drawLine(36, 86, 14, 165, 1.0f, 0.0f, 0.0f);
-    drawLine(157, 104, 87, 79, 1.0f, 0.0f, 0.0f);
-    drawLine(153, 244, 114, 160, 1.0f, 0.0f, 0.0f);
-    drawLine(213, 167, 145, 20, 1.0f, 0.0f, 0.0f);
-    drawLine(227, 65, 36, 65, 1.0f, 0.0f, 0.0f);
-    drawLine(63, 240, 63, 34, 1.0f, 0.0f, 0.0f);
-    drawLine(242, 57, 185, 12, 1.0f, 0.0f, 0.0f);
-    drawLine(142, 176, 195, 107, 1.0f, 0.0f, 0.0f);
-    drawLine(97, 50, 50, 95, 1.0f, 0.0f, 0.0f);
-    drawLine(125, 0, 125, 50, 1.0f, 0.0f, 0.0f);
+    desenharLinha(36, 86, 14, 165, 1.0f, 0.0f, 0.0f);
+    desenharLinha(157, 104, 87, 79, 1.0f, 0.0f, 0.0f);
+    desenharLinha(153, 244, 114, 160, 1.0f, 0.0f, 0.0f);
+    desenharLinha(213, 167, 145, 20, 1.0f, 0.0f, 0.0f);
+    desenharLinha(227, 65, 36, 65, 1.0f, 0.0f, 0.0f);
+    desenharLinha(63, 240, 63, 34, 1.0f, 0.0f, 0.0f);
+    desenharLinha(242, 57, 185, 12, 1.0f, 0.0f, 0.0f);
+    desenharLinha(142, 176, 195, 107, 1.0f, 0.0f, 0.0f);
+    desenharLinha(97, 50, 50, 95, 1.0f, 0.0f, 0.0f);
+    desenharLinha(125, 0, 125, 50, 1.0f, 0.0f, 0.0f);
 
     // Realizar o recorte de Cohen-Sutherland para cada linha de teste
-    clipLine(36, 86, 14, 165);
-    clipLine(157, 104, 87, 79);
-    clipLine(153, 244, 114, 160);
-    clipLine(213, 167, 145, 20);
-    clipLine(227, 65, 36, 65);
-    clipLine(63, 240, 63, 34);
-    clipLine(242, 57, 185, 12);
-    clipLine(142, 176, 195, 107);
-    clipLine(97, 50, 50, 95);
-    clipLine(125, 0, 125, 50);
+    cortarLinha(36, 86, 14, 165);
+    cortarLinha(157, 104, 87, 79);
+    cortarLinha(153, 244, 114, 160);
+    cortarLinha(213, 167, 145, 20);
+    cortarLinha(227, 65, 36, 65);
+    cortarLinha(63, 240, 63, 34);
+    cortarLinha(242, 57, 185, 12);
+    cortarLinha(142, 176, 195, 107);
+    cortarLinha(97, 50, 50, 95);
+    cortarLinha(125, 0, 125, 50);
 
     glFlush();
 }
