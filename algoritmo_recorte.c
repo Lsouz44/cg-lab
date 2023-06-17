@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <GL/glut.h>
 
+// Largura e altura da janela
+GLfloat windowWidth;
+GLfloat windowHeight;
+
 // Definindo os códigos de recorte
 const int INSIDE = 0; // 0000
 const int LEFT = 1;   // 0001
@@ -96,6 +100,10 @@ void cortarLinha(float x1, float y1, float x2, float y2)
 // Função para exibir os resultados na tela
 void display()
 {
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    // Limpa a janela de visualização com a cor de fundo especificada
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Desenhar a área de recorte retangular em preto
@@ -129,25 +137,57 @@ void display()
     cortarLinha(125, 0, 125, 50);
 
     glFlush();
+
+    // Executa os comandos OpenGL
+    glutSwapBuffers();
 }
 
 // Função de inicialização do OpenGL
 void init()
 {
+    // Define a cor de fundo da janela de visualização como branco
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+}
+
+// Função callback chamada quando o tamanho da janela é alterado 
+void AlteraTamanhoJanela(GLsizei w, GLsizei h)
+{
+    // Evita a divisao por zero
+    if(h == 0) h = 1;
+                          
+    // Especifica as dimensões da Viewport
+    glViewport(0, 0, w, h);
+
+    // Inicializa o sistema de coordenadas
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0.0, 300.0, 0.0, 300.0);
+
+    // Estabelece a janela de seleção (left, right, bottom, top)
+    // Se a largura da janela, em pixels, for menor que a altura, a largura da viewport é fixada em 250 e a altura é escalada para o necessário
+    if (w <= h)  {
+    	windowHeight = 250.0f*h/w;
+		windowWidth = 250.0f;
+    }
+    else  { 
+    // Se a altura da janela, em pixels, for menor que a largura, a altura da viewport é fixada em 250 e a largura é escalada para o necessário
+		windowWidth = 250.0f*w/h;
+		windowHeight = 250.0f;
+    }
+     
+    // As dimensões da janela vão de (0.0, 0.0) até (windowWidth, windowHeight), essas são as coordenadas da tela
+    gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);
 }
 
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(800, 600);
+    glutInitWindowPosition(10,10);
     glutCreateWindow("Algoritmo de recorte de Cohen-Sutherland");
-    init();
     glutDisplayFunc(display);
+    glutReshapeFunc(AlteraTamanhoJanela);
+    init();
     glutMainLoop();
     return 0;
 }
