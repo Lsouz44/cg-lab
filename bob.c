@@ -744,6 +744,30 @@ void display(void)
 	glutSolidSphere(1.0, 20, 6);
   glPopMatrix();
 
+  // Marcas
+  glPushMatrix();
+    glTranslatef(-1.7, 0.7, -1.3);
+    glRotatef(90.0, 1.0, 0.0, 0.0);
+    glColor3f(1.0, 0.2, 0.3);
+  	glScalef(0.25, 1.8, 0.15);  
+  	drawSolidCylinder(1.0, 1.0, 20, 20);
+  glPopMatrix();
+
+  glPushMatrix();
+    glTranslatef(-2.2, 0.5, -1.3);
+    glRotatef(90.0, 1.0, 0.0, 0.0);
+    glColor3f(1.0, 0.2, 0.3);
+  	glScalef(0.2, 1.85, 0.1);  
+  	drawSolidCylinder(1.0, 1.0, 20, 20);
+  glPopMatrix();
+
+  glPushMatrix();
+    glTranslatef(-2.2, 0.7, -1.2);
+    glRotatef(90.0, 1.0, 0.0, 0.0);
+    glColor3f(1.0, 0.2, 0.3);
+  	glScalef(0.1, 1.6, 0.05);  
+  	drawSolidCylinder(1.0, 1.0, 20, 20);
+  glPopMatrix();
 
 //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 //===================================
